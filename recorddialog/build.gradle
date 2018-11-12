@@ -1,18 +1,18 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.jfrog.bintray'
+//apply plugin: 'com.github.dcendents.android-maven'
 android {
-    compileSdkVersion 26
+    compileSdkVersion 28
 
 
 
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 6
         versionName "1.2.3"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
 
@@ -32,49 +32,49 @@ version = "1.2.3"  //customize this for new release
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation 'com.android.support:design:26.1.0'
-    compile 'com.kailashdabhi:om-recorder:1.1.5'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.kailashdabhi:om-recorder:1.1.5'
 }
 
-install {
-    repositories.mavenInstaller {
-        pom {
-            project {
-                packaging 'aar'
-                groupId 'com.ivansotelo'
-                artifactId 'RecordDialog'
-
-                name 'RecordDialog'
-                description 'A Simple Wav audio recorder dialog'
-                url 'http://deskode.com'
-
-                licenses {
-                    license {
-                        name 'MIT'
-                        url 'https://opensource.org/licenses/MIT'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'ivansotelo'
-                        name 'Ivan Sotelo'
-                        email 'ivan_sotelo@deskode.com'
-                    }
-                }
-                scm {
-                    connection 'https://github.com/IvanSotelo/RecordDialog.git'
-                    developerConnection 'https://github.com/IvanSotelo/RecordDialog.git'
-                    url 'http://deskode.com'
-
-                }
-            }
-        }
-    }
-}
+//install {
+//    repositories.mavenInstaller {
+//        pom {
+//            project {
+//                packaging 'aar'
+//                groupId 'com.ivansotelo'
+//                artifactId 'RecordDialog'
+//
+//                name 'RecordDialog'
+//                description 'A Simple Wav audio recorder dialog'
+//                url 'https://heydarii.ir'
+//
+//                licenses {
+//                    license {
+//                        name 'MIT'
+//                        url 'https://opensource.org/licenses/MIT'
+//                    }
+//                }
+//                developers {
+//                    developer {
+//                        id 'sirlordpouya'
+//                        name 'Pouya Heydari'
+//                        email 'pouyaheydary@gmail.com'
+//                    }
+//                }
+//                scm {
+//                    connection 'https://github.com/SirLordPouya/RecordDialog.git'
+//                    developerConnection 'https://github.com/SirLordPouya/RecordDialog.git'
+//                    url 'https://heydarii.ir'
+//
+//                }
+//            }
+//        }
+//    }
+//}
 
 
 if (project.hasProperty("android")) {
@@ -104,26 +104,4 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives javadocJar
     archives sourcesJar
-}
-
-// Bintray
-bintray {
-    user = 'ivansotelo'
-    key = 'bb70f03d9b1dd1d047e7e05599650d1f4a96bdfd'
-
-    configurations = ['archives']
-    pkg {
-        repo = 'RecordDialog'
-        name = 'RecordDialog'
-        desc = 'A Simple Wav audio recorder dialog'
-        websiteUrl = 'http://deskode.com'
-        vcsUrl = 'https://github.com/IvanSotelo/RecordDialog.git'
-        licenses = ["MIT"]
-        publish = true
-        publicDownloadNumbers = true
-        version {
-            name = '1.2.3'
-            desc = 'A Simple Wav audio recorder dialog '
-        }
-    }
 }
