@@ -1,10 +1,10 @@
-# RecordDialog [![](https://jitpack.io/v/SirLordPouya/RecordDialog.svg)](https://jitpack.io/#SirLordPouya/RecordDialog)
+# RecordDialog 
 
 
+[![](https://jitpack.io/v/SirLordPouya/RecordDialog.svg)](https://jitpack.io/#SirLordPouya/RecordDialog)
   <a target="_blank" href="https://android-arsenal.com/api?level=18"><img src="https://img.shields.io/badge/API-18%2B-brightgreen.svg"></a>
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RecordDialog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/6797)
   <a target="_blank" href="https://travis-ci.org/IvanSotelo/RecordDialog"><img src="https://travis-ci.org/IvanSotelo/RecordDialog.svg?branch=master"></a>
-  <a target="_blank" href="https://www.paypal.me/IvanSotelo" title="Donate using PayPal"><img src="https://img.shields.io/badge/paypal-donate-brightgreen.svg" /></a>
 
 A Simple Wav audio recorder dialog
 
@@ -13,9 +13,7 @@ A Simple Wav audio recorder dialog
 
 ## Releases:
 
-#### Current release: 1.2.3.
-
-You can see all the library releases [here](https://github.com/IvanSotelo/RecordDialog/releases).
+#### Current release: [![](https://jitpack.io/v/SirLordPouya/RecordDialog.svg)](https://jitpack.io/#SirLordPouya/RecordDialog)
 
 ---
 
@@ -44,7 +42,7 @@ allprojects {
 Now add the dependency to your app build.gradle file:
 
 ```groovy
-compile 'com.github.IvanSotelo:RecordDialog:1.2.3'
+	      implementation 'com.github.SirLordPouya:RecordDialog:2.0.2'
 ```
 
 ### Creating the dialog with Java
@@ -72,17 +70,7 @@ Here is a complete snippet of it usage:
 --------
 #### Gradle
 ```groovy
-compile 'com.ivansotelo.RecordDialog:1.2.3'
-```
-
-##### Maven
-```xml
-<dependency>
-  <groupId>com.ivansotelo</groupId>
-  <artifactId>RecordDialog</artifactId>
-  <version>1.2.3</version>
-  <type>aar</type>
-</dependency>
+	implementation 'com.github.SirLordPouya:RecordDialog:2.0.2'
 ```
 
 ## License
