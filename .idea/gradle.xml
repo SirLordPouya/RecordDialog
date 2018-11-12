@@ -9,7 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/recorddialog" />
+            <option value="$PROJECT_DIR$/voicerecorder" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

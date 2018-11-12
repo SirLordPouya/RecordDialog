@@ -1,4 +1,4 @@
-package com.deskode.dialog;
+package com.pouya.voicerecorder.dialog;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.deskode.recorddialog.test", appContext.getPackageName());
+        assertEquals("com.deskode.recorddialog", appContext.getPackageName());
     }
 }

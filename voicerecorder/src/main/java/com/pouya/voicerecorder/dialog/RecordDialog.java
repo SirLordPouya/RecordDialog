@@ -1,4 +1,4 @@
-package com.deskode.dialog;
+package com.pouya.voicerecorder.dialog;
 
 import android.animation.Animator;
 import android.annotation.SuppressLint;

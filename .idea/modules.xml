@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/RecordDialog.iml" filepath="$PROJECT_DIR$/.idea/RecordDialog.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/recorddialog/recorddialog.iml" filepath="$PROJECT_DIR$/recorddialog/recorddialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/voicerecorder/voicerecorder.iml" filepath="$PROJECT_DIR$/voicerecorder/voicerecorder.iml" />
     </modules>
   </component>
 </project>

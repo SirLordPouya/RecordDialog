@@ -1,1 +1,1 @@
-include ':app', ':recorddialog'
+include ':app', ':voicerecorder'

@@ -1,4 +1,4 @@
-package com.deskode.dialog;
+package com.pouya.voicerecorder.dialog;
 
 import org.junit.Test;
 

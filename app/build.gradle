@@ -7,8 +7,8 @@ android {
         applicationId "com.sirlordpouya.recorder.dialog"
         minSdkVersion 18
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 100
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -27,6 +27,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
-    implementation project(':recorddialog')
+    implementation project(':voicerecorder')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
