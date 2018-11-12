@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 recordDialog = RecordDialog.newInstance("Record Audio");
                 recordDialog.setMessage("Press for record");
-                recordDialog.show(MainActivity.this.getFragmentManager(),"TAG");
+                recordDialog.show(getSupportFragmentManager(),"TAG");
                 recordDialog.setPositiveButton("Save", new RecordDialog.ClickListener() {
                     @Override
                     public void OnClickListener(String path) {

@@ -3,7 +3,6 @@ package com.deskode.recorddialog;
 import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.media.AudioFormat;
 import android.media.MediaPlayer;
@@ -11,10 +10,14 @@ import android.media.MediaRecorder;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import androidx.appcompat.app.AlertDialog;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +33,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import androidx.fragment.app.DialogFragment;
 import omrecorder.AudioChunk;
 import omrecorder.AudioRecordConfig;
 import omrecorder.OmRecorder;
@@ -147,7 +151,7 @@ public class RecordDialog extends DialogFragment {
         alertDialog.setPositiveButton(strPositiveButton, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (STATE_BUTTON.equals("RECORD")){
+                if (STATE_BUTTON.equals("RECORD")) {
                     try {
                         recorder.stopRecording();
                         stopTimer();
@@ -263,7 +267,7 @@ public class RecordDialog extends DialogFragment {
         }
     }
 
-    private void startTimer(){
+    private void startTimer() {
         stopTimer();
         _timer = new Timer();
         _timer.scheduleAtFixedRate(new TimerTask() {
@@ -274,7 +278,7 @@ public class RecordDialog extends DialogFragment {
         }, 0, 1000);
     }
 
-    private void stopTimer(){
+    private void stopTimer() {
         if (_timer != null) {
             _timer.cancel();
             _timer.purge();
@@ -284,16 +288,16 @@ public class RecordDialog extends DialogFragment {
 
     private void updateTimer() {
         // here you check the value of getActivity() and break up if needed
-        if(getActivity() == null)
+        if (getActivity() == null)
             return;
 
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if(STATE_BUTTON.equals("RECORD")) {
+                if (STATE_BUTTON.equals("RECORD")) {
                     recorderSecondsElapsed++;
                     _timerView.setText(Util.formatSeconds(recorderSecondsElapsed));
-                } else if(STATE_BUTTON.equals("PLAY")){
+                } else if (STATE_BUTTON.equals("PLAY")) {
                     playerSecondsElapsed++;
                     _timerView.setText(Util.formatSeconds(playerSecondsElapsed));
                 }
@@ -338,8 +342,7 @@ public class RecordDialog extends DialogFragment {
         dismiss();
     }
 
-    public interface ClickListener
-    {
+    public interface ClickListener {
         void OnClickListener(String path);
     }
 }
