@@ -1,11 +1,7 @@
 apply plugin: 'com.android.library'
-//apply plugin: 'com.jfrog.bintray'
-//apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 28
-
-
-
     defaultConfig {
         minSdkVersion 18
         targetSdkVersion 28
@@ -32,50 +28,22 @@ version = "1.2.3"  //customize this for new release
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    //Testing libraries
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+
+    //Support Libraries
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
     implementation 'com.google.android.material:material:1.0.0'
+
+    //Kotlin Libraries
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //Voice recorder library
     implementation 'com.kailashdabhi:om-recorder:1.1.5'
 }
-
-//install {
-//    repositories.mavenInstaller {
-//        pom {
-//            project {
-//                packaging 'aar'
-//                groupId 'com.ivansotelo'
-//                artifactId 'RecordDialog'
-//
-//                name 'RecordDialog'
-//                description 'A Simple Wav audio recorder dialog'
-//                url 'https://heydarii.ir'
-//
-//                licenses {
-//                    license {
-//                        name 'MIT'
-//                        url 'https://opensource.org/licenses/MIT'
-//                    }
-//                }
-//                developers {
-//                    developer {
-//                        id 'sirlordpouya'
-//                        name 'Pouya Heydari'
-//                        email 'pouyaheydary@gmail.com'
-//                    }
-//                }
-//                scm {
-//                    connection 'https://github.com/SirLordPouya/RecordDialog.git'
-//                    developerConnection 'https://github.com/SirLordPouya/RecordDialog.git'
-//                    url 'https://heydarii.ir'
-//
-//                }
-//            }
-//        }
-//    }
-//}
-
 
 if (project.hasProperty("android")) {
     // deploy aar

@@ -1,4 +1,4 @@
-package com.deskode.recorddialog;
+package com.deskode.dialog;
 
 import android.animation.Animator;
 import android.annotation.SuppressLint;
@@ -42,7 +42,6 @@ import omrecorder.PullableSource;
 import omrecorder.Recorder;
 
 public class RecordDialog extends DialogFragment {
-    private String _strTitle;
     private String _strMessage;
     private String _strPositiveButtonText;
     private FloatingActionButton _recordButton;
@@ -62,30 +61,22 @@ public class RecordDialog extends DialogFragment {
 
     }
 
-    public static RecordDialog newInstance(String title) {
-        RecordDialog frag = new RecordDialog();
-        Bundle args = new Bundle();
-        args.putString("title", title);
-        frag.setArguments(args);
-        return frag;
+
+    /**
+     * new Insstance method
+     * @return
+     */
+    public static RecordDialog newInstance() {
+        return new RecordDialog();
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams
-                .SOFT_INPUT_STATE_HIDDEN);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         setupRecorder();
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -163,9 +154,6 @@ public class RecordDialog extends DialogFragment {
             }
         });
 
-        String strTitle = _strTitle == null ? "Grabar audio" : _strTitle;
-        alertDialog.setTitle(strTitle);
-
         recorderSecondsElapsed = 0;
         playerSecondsElapsed = 0;
 
@@ -178,9 +166,6 @@ public class RecordDialog extends DialogFragment {
 
     // Change End
 
-    public void setTitle(String strTitle) {
-        _strTitle = strTitle;
-    }
 
     public void setMessage(String strMessage) {
         _strMessage = strMessage;

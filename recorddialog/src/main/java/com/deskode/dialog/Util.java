@@ -1,4 +1,4 @@
-package com.deskode.recorddialog;
+package com.deskode.dialog;
 
 public class Util {
 
