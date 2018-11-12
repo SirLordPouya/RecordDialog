@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         recordDialog = RecordDialog.newInstance()
         recordDialog.setMessage("Press for record")
         recordDialog.show(supportFragmentManager, "TAG")
-        recordDialog.setPositiveButton("Save") { path -> Toast.makeText(this@MainActivity, "Save audio: $path", Toast.LENGTH_LONG).show() }
+        recordDialog.setPositiveButton("Save") { Toast.makeText(this@MainActivity, "Save audio: $it", Toast.LENGTH_LONG).show() }
 
     }
 }

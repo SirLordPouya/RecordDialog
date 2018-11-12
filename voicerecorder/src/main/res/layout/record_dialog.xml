@@ -21,7 +21,7 @@
         app:rippleColor="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/_txtTimer"
+        android:id="@+id/txtTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
