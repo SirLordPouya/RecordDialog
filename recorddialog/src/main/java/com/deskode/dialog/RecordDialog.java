@@ -7,24 +7,15 @@ import android.content.DialogInterface;
 import android.media.AudioFormat;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import androidx.appcompat.app.AlertDialog;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.animation.AnimationUtils;
-import android.view.animation.Interpolator;
 import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,6 +24,8 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import omrecorder.AudioChunk;
 import omrecorder.AudioRecordConfig;
@@ -53,9 +46,9 @@ public class RecordDialog extends DialogFragment {
     private int playerSecondsElapsed;
 
     private ClickListener _clickListener;
-    Recorder recorder;
-    MediaPlayer mediaPlayer;
-    MediaPlayer mPlayer;
+    private Recorder recorder;
+    private MediaPlayer mediaPlayer;
+    private MediaPlayer mPlayer;
 
     public RecordDialog() {
 
@@ -114,7 +107,7 @@ public class RecordDialog extends DialogFragment {
                             recorder.stopRecording();
                             mPlayer = MediaPlayer.create(getContext(), R.raw.pop);
                             mPlayer.start();
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                         _recordButton.setImageResource(R.drawable.ic_play);
@@ -281,23 +274,19 @@ public class RecordDialog extends DialogFragment {
             public void run() {
                 if (STATE_BUTTON.equals("RECORD")) {
                     recorderSecondsElapsed++;
-                    _timerView.setText(Util.formatSeconds(recorderSecondsElapsed));
+                    _timerView.setText(Util.INSTANCE.formatSeconds(recorderSecondsElapsed));
                 } else if (STATE_BUTTON.equals("PLAY")) {
                     playerSecondsElapsed++;
-                    _timerView.setText(Util.formatSeconds(playerSecondsElapsed));
+                    _timerView.setText(Util.INSTANCE.formatSeconds(playerSecondsElapsed));
                 }
             }
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     private void scaleAnimation() {
-        final Interpolator interpolador = AnimationUtils.loadInterpolator(getContext(),
-                android.R.interpolator.fast_out_slow_in);
         _recordButton.animate()
                 .scaleX(1.1f)
                 .scaleY(1.1f)
-                .setInterpolator(interpolador)
                 .setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {

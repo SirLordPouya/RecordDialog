@@ -21,9 +21,6 @@ android {
 
     sourceSets { main { res.srcDirs = ['src/main/res', 'src/main/res/raw'] } }
 }
-group = "com.ivansotelo"
-archivesBaseName = "RecordDialog"
-version = "1.2.3"  //customize this for new release
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
