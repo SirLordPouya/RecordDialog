@@ -1,4 +1,5 @@
-# RecordDialog <a href="https://github.com/IvanSotelo/RecordDialog#how-to-include"><img src="https://jitpack.io/v/IvanSotelo/RecordDialog.svg"></a>
+# RecordDialog [![](https://jitpack.io/v/SirLordPouya/RecordDialog.svg)](https://jitpack.io/#SirLordPouya/RecordDialog)
+
 
   <a target="_blank" href="https://android-arsenal.com/api?level=18"><img src="https://img.shields.io/badge/API-18%2B-brightgreen.svg"></a>
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RecordDialog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/6797)
