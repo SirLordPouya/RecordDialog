@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getContext();
 
-        assertEquals("com.deskode.dialog.test", appContext.getPackageName());
+        assertEquals("com.pouya.voicerecorder.dialog.test", appContext.getPackageName());
     }
 }
