@@ -1,22 +1,18 @@
-# RecordDialog <a href="https://github.com/IvanSotelo/RecordDialog#how-to-include"><img src="https://jitpack.io/v/IvanSotelo/RecordDialog.svg"></a>
+# Voice Recorder Dialog 
 
-  <a target="_blank" href="https://android-arsenal.com/api?level=18"><img src="https://img.shields.io/badge/API-18%2B-brightgreen.svg"></a>
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RecordDialog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/6797)
+
+[![](https://jitpack.io/v/SirLordPouya/RecordDialog.svg)](https://jitpack.io/#SirLordPouya/RecordDialog)
+[![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)
   <a target="_blank" href="https://travis-ci.org/IvanSotelo/RecordDialog"><img src="https://travis-ci.org/IvanSotelo/RecordDialog.svg?branch=master"></a>
-  <a target="_blank" href="https://www.paypal.me/IvanSotelo" title="Donate using PayPal"><img src="https://img.shields.io/badge/paypal-donate-brightgreen.svg" /></a>
 
-A Simple Wav audio recorder dialog
+A Simple Wav audio recorder dialog based on [RecordDialog](https://github.com/IvanSotelo/RecordDialog)
 
 ![Screen Shot](https://raw.githubusercontent.com/IvanSotelo/RecordDialog/master/20180521_093731.gif)
 ---
 
 ## Releases:
 
-#### Current release: 1.2.3.
-
-You can see all the library releases [here](https://github.com/IvanSotelo/RecordDialog/releases).
-
----
+#### Current release: [![](https://jitpack.io/v/SirLordPouya/RecordDialog.svg)](https://jitpack.io/#SirLordPouya/RecordDialog)
 
 ## Usage:
 
@@ -26,6 +22,21 @@ Add these permissions into your `AndroidManifest.xml` and [request for them in A
 <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 ```
+
+
+### Creating the dialog
+
+```
+    private fun showRecorderDialog() {
+        val recordDialog = RecordDialog.newInstance()
+        recordDialog.setMessage("Press for record")
+        recordDialog.show(supportFragmentManager, "TAG")
+        recordDialog.setPositiveButton("Save") { Toast.makeText(this@MainActivity, "Save audio: $it", Toast.LENGTH_LONG).show() }
+
+    }
+```
+
+## Download
 
 #### Adding the depencency
 
@@ -43,45 +54,7 @@ allprojects {
 Now add the dependency to your app build.gradle file:
 
 ```groovy
-compile 'com.github.IvanSotelo:RecordDialog:1.2.3'
-```
-
-### Creating the dialog with Java
-
-Here is a complete snippet of it usage:
-
-```java
-        findViewById(R.id.show).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              recordDialog = RecordDialog.newInstance("Record Audio");
-              recordDialog.setMessage("Press for record");
-              recordDialog.show(MainActivity.this.getFragmentManager(),"TAG");
-              recordDialog.setPositiveButton("Save", new RecordDialog.ClickListener() {
-                  @Override
-                  public void OnClickListener(String path) {
-                      Toast.makeText(MainActivity.this,"Save audio: " + path, Toast.LENGTH_LONG).show();
-                  }
-              });
-            }
-        });
-```
-
-### Download
---------
-#### Gradle
-```groovy
-compile 'com.ivansotelo.RecordDialog:1.2.3'
-```
-
-##### Maven
-```xml
-<dependency>
-  <groupId>com.ivansotelo</groupId>
-  <artifactId>RecordDialog</artifactId>
-  <version>1.2.3</version>
-  <type>aar</type>
-</dependency>
+implementation 'com.github.SirLordPouya:RecordDialog:2.0.2'
 ```
 
 ## License
@@ -89,7 +62,7 @@ compile 'com.ivansotelo.RecordDialog:1.2.3'
 ```
 The MIT License (MIT)
 
-Copyright (c) 2017 Ivan Sotelo Vargas
+Copyright (c) 2018 Pouya Heydari
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
