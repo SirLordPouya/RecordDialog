@@ -37,9 +37,9 @@ android:
  - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
  - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
  licenses:
- - android-sdk-preview-license-.+
- - android-sdk-license-.+
- - google-gdk-license-.+
+  - 'android-sdk-preview-license-52d11cd2'
+  - 'android-sdk-license-.+'
+  - 'google-gdk-license-.+'
 
  before_install:
 - mkdir "$ANDROID_HOME/licenses" || true
