@@ -2,8 +2,7 @@
 
 
 [![](https://jitpack.io/v/SirLordPouya/RecordDialog.svg)](https://jitpack.io/#SirLordPouya/RecordDialog)
-  <a target="_blank" href="https://android-arsenal.com/api?level=18"><img src="https://img.shields.io/badge/API-18%2B-brightgreen.svg"></a>
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RecordDialog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/6797)
+[![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)
   <a target="_blank" href="https://travis-ci.org/IvanSotelo/RecordDialog"><img src="https://travis-ci.org/IvanSotelo/RecordDialog.svg?branch=master"></a>
 
 A Simple Wav audio recorder dialog based on [RecordDialog](https://github.com/IvanSotelo/RecordDialog)
