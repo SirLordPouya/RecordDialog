@@ -1,60 +1,40 @@
-language: java
-sudo: required
-
-matrix:
-  include:
-    - language: java
-      install: true
-      os: osx
-      osx_image: xcode9.3
-      before_install:
-        - brew update
-        - brew outdated xctool || brew upgrade xctool
-        - npm install -g appium
-      script:
-        - ./gradlew clean build xcuiTest -x test -x signArchives
-
-    - language: android
-      install: true
-      install:
-        - echo y | android update sdk -u -a -t tools
-        - echo y | android update sdk -u -a -t platform-tools
-        - echo y | android update sdk -u -a -t build-tools-25.0.2
-        - echo y | android update sdk -u -a -t android-25
-        - echo y | android update sdk -u -a -t extra-google-m2repository
-        - echo y | android update sdk -u -a -t extra-android-m2repository
-      os: linux
-      jdk: oraclejdk8
-      android:
-        components:
-          - extra-android-support
-          - sys-img-armeabi-v7a-android-24
-      before_install:
-        - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
-        - nvm install 8
-        - node --version
-        - npm --version
-        - npm install -g appium
-        - echo y | android update sdk -a --no-ui --filter android-24
-        - echo y | android update sdk -a --no-ui --filter sys-img-armeabi-v7a-android-24
-        - android list targets | grep -E '^id:' | awk -F '"' '{$1=""; print $2}' # list all targets
-        - echo no | android create avd --force -n test -t android-24 --abi armeabi-v7a
-        - emulator -avd test -no-skin -no-window &
-        - android-wait-for-emulator
-        - adb shell input keyevent 82 &
-        - adb wait-for-device get-serialno
-        - sleep 100
-        - chmod +x gradlew
-        - ./gradlew --version
-        - echo y |adb devices
-
-      script:
-      - ./gradlew clean build uiAutomationTest -x test -x signArchives
-
-before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+language: android
+notifications:
+  email: false
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y pax
+env:
+  global:
+  - ANDROID_API_LEVEL=28
+  - ANDROID_BUILD_TOOLS_VERSION=28.0.3
+  - ANDROID_EMU_API_LEVEL=22
+  - ANDROID_ABI=armeabi-v7a
+  - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+  - QEMU_AUDIO_DRV=none # Remove audio
 cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
+android:
+  components:
+  - tools
+  - platform-tools
+  - tools
+  - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+  - android-$ANDROID_API_LEVEL
+  - android-$ANDROID_EMU_API_LEVEL
+  - extra-android-support
+  - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL
+before_script:
+  - echo -e "Host github.com\n\tHostName github.com\n\tUser git\n\tIdentityFile ~/.ssh/id_travisci\n" >> ~/.ssh/config
+  - echo no | android create avd --force -n test -t android-$ANDROID_EMU_API_LEVEL --abi google_apis/$ANDROID_ABI
+  - emulator -avd test -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+script:
+  - ./gradlew clean installDebug
+  - ./gradlew check
+  - ./gradlew testDebugUnitTest
+  - ./gradlew connectedDebugAndroidTest
