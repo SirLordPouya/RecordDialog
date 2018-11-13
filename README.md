@@ -15,8 +15,6 @@ A Simple Wav audio recorder dialog
 
 #### Current release: [![](https://jitpack.io/v/SirLordPouya/RecordDialog.svg)](https://jitpack.io/#SirLordPouya/RecordDialog)
 
----
-
 ## Usage:
 
 #### Permissions
@@ -66,8 +64,8 @@ Here is a complete snippet of it usage:
         });
 ```
 
-### Download
---------
+## Download
+
 #### Gradle
 ```groovy
 	implementation 'com.github.SirLordPouya:RecordDialog:2.0.2'
@@ -78,7 +76,7 @@ Here is a complete snippet of it usage:
 ```
 The MIT License (MIT)
 
-Copyright (c) 2017 Ivan Sotelo Vargas
+Copyright (c) 2018 Pouya Heydari
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
