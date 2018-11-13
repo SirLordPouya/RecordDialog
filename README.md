@@ -1,4 +1,4 @@
-# RecordDialog 
+# Voice Recorder Dialog 
 
 
 [![](https://jitpack.io/v/SirLordPouya/RecordDialog.svg)](https://jitpack.io/#SirLordPouya/RecordDialog)
@@ -6,7 +6,7 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RecordDialog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/6797)
   <a target="_blank" href="https://travis-ci.org/IvanSotelo/RecordDialog"><img src="https://travis-ci.org/IvanSotelo/RecordDialog.svg?branch=master"></a>
 
-A Simple Wav audio recorder dialog
+A Simple Wav audio recorder dialog based on [RecordDialog](https://github.com/IvanSotelo/RecordDialog)
 
 ![Screen Shot](https://raw.githubusercontent.com/IvanSotelo/RecordDialog/master/20180521_093731.gif)
 ---
@@ -24,24 +24,6 @@ Add these permissions into your `AndroidManifest.xml` and [request for them in A
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 ```
 
-#### Adding the depencency
-
-Add this to your root *build.gradle* file:
-
-```
-allprojects {
-    repositories {
-        ...
-        maven { url 'https://jitpack.io' }
-    }
-}
-```
-
-Now add the dependency to your app build.gradle file:
-
-```groovy
-implementation 'com.github.SirLordPouya:RecordDialog:2.0.2'
-```
 
 ### Creating the dialog
 
@@ -57,7 +39,21 @@ implementation 'com.github.SirLordPouya:RecordDialog:2.0.2'
 
 ## Download
 
-#### Gradle
+#### Adding the depencency
+
+Add this to your root *build.gradle* file:
+
+```
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+Now add the dependency to your app build.gradle file:
+
 ```groovy
 implementation 'com.github.SirLordPouya:RecordDialog:2.0.2'
 ```
