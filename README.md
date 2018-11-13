@@ -40,35 +40,26 @@ allprojects {
 Now add the dependency to your app build.gradle file:
 
 ```groovy
-	      implementation 'com.github.SirLordPouya:RecordDialog:2.0.2'
+implementation 'com.github.SirLordPouya:RecordDialog:2.0.2'
 ```
 
-### Creating the dialog with Java
+### Creating the dialog
 
-Here is a complete snippet of it usage:
+```
+    private fun showRecorderDialog() {
+        val recordDialog = RecordDialog.newInstance()
+        recordDialog.setMessage("Press for record")
+        recordDialog.show(supportFragmentManager, "TAG")
+        recordDialog.setPositiveButton("Save") { Toast.makeText(this@MainActivity, "Save audio: $it", Toast.LENGTH_LONG).show() }
 
-```java
-        findViewById(R.id.show).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              recordDialog = RecordDialog.newInstance("Record Audio");
-              recordDialog.setMessage("Press for record");
-              recordDialog.show(MainActivity.this.getFragmentManager(),"TAG");
-              recordDialog.setPositiveButton("Save", new RecordDialog.ClickListener() {
-                  @Override
-                  public void OnClickListener(String path) {
-                      Toast.makeText(MainActivity.this,"Save audio: " + path, Toast.LENGTH_LONG).show();
-                  }
-              });
-            }
-        });
+    }
 ```
 
 ## Download
 
 #### Gradle
 ```groovy
-	implementation 'com.github.SirLordPouya:RecordDialog:2.0.2'
+implementation 'com.github.SirLordPouya:RecordDialog:2.0.2'
 ```
 
 ## License
