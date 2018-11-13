@@ -3,7 +3,6 @@ package com.pouya.voicerecorder.dialog
 import android.animation.Animator
 import android.annotation.SuppressLint
 import android.app.Dialog
-import android.content.DialogInterface
 import android.media.AudioFormat
 import android.media.MediaPlayer
 import android.media.MediaRecorder
@@ -14,47 +13,41 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.TextView
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-
-import java.io.File
-import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Timer
-import java.util.TimerTask
-
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import omrecorder.AudioChunk
-import omrecorder.AudioRecordConfig
-import omrecorder.OmRecorder
-import omrecorder.PullTransport
-import omrecorder.PullableSource
-import omrecorder.Recorder
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import omrecorder.*
+import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class RecordDialog : DialogFragment() {
+
+
     private var _strMessage: String? = null
     private var _strPositiveButtonText: String? = null
     private var _recordButton: FloatingActionButton? = null
     private var STATE_BUTTON = "INIT"
-    var audioPath: String? = null
-        private set
+    private var audioPath: String? = null
     private var _timerView: TextView? = null
     private var _timer: Timer? = null
     private var recorderSecondsElapsed: Int = 0
     private var playerSecondsElapsed: Int = 0
-
     private var _clickListener: ((String?) -> Unit)? = null
     private var recorder: Recorder? = null
     private var mediaPlayer: MediaPlayer? = null
     private var mPlayer: MediaPlayer? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+        hideKeyboard()
         setupRecorder()
         return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    private fun hideKeyboard() {
+        dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -62,11 +55,13 @@ class RecordDialog : DialogFragment() {
         // Getting the layout inflater to inflate the view in an alert dialog.
         val inflater = LayoutInflater.from(activity)
         val rootView = inflater.inflate(R.layout.record_dialog, null)
-        val strMessage = if (_strMessage == null) "Presiona para grabar" else _strMessage
+        val strMessage = if (_strMessage == null) "Press Button To Record" else _strMessage
         _timerView = rootView.findViewById(R.id.txtTimer)
-        _timerView!!.text = strMessage
         _recordButton = rootView.findViewById(R.id.btnRecord)
-        _recordButton!!.setOnClickListener {
+        _timerView?.text = strMessage
+        _recordButton?.setOnClickListener {
+            if (!Util.checkPermission(context!!))
+                return@setOnClickListener
             scaleAnimation()
             when (STATE_BUTTON) {
                 "INIT" -> {
@@ -113,7 +108,7 @@ class RecordDialog : DialogFragment() {
                 try {
                     recorder!!.stopRecording()
                     stopTimer()
-                } catch (e: IOException) {
+                } catch (e: Exception) {
                     e.printStackTrace()
                 }
 
@@ -266,6 +261,8 @@ class RecordDialog : DialogFragment() {
 
     override fun onPause() {
         super.onPause()
+        stopTimer()
+        stopMediaPlayer()
         dismiss()
     }
 

@@ -5,7 +5,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.sirlordpouya.recorder.dialog"
-        minSdkVersion 18
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 202
         versionName "2.0.2"

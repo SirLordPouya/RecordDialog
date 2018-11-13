@@ -1,5 +1,10 @@
 package com.pouya.voicerecorder.dialog
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import androidx.core.content.ContextCompat
+
 object Util {
 
     fun formatSeconds(seconds: Int): String {
@@ -16,4 +21,13 @@ object Util {
         }
     }
 
+     fun checkPermission(context: Context): Boolean {
+        val requiredPermissions = arrayOf(Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        requiredPermissions.forEach {
+            if (ContextCompat.checkSelfPermission(context, it) != PackageManager.PERMISSION_GRANTED)
+                return false
+        }
+        return true
+
+    }
 }
