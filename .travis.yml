@@ -1,39 +1,15 @@
 language: android
-notifications:
-  email: false
-before_install:
-  - sudo apt-get install -y pax
-env:
-  global:
-  - ANDROID_API_LEVEL=28
-  - ANDROID_BUILD_TOOLS_VERSION=28.0.3
-  - ANDROID_EMU_API_LEVEL=22
-  - ANDROID_ABI=armeabi-v7a
-  - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
-  - QEMU_AUDIO_DRV=none # Remove audio
-cache:
-  directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
-    - $HOME/.android/build-cache
+jdk: oraclejdk8
+
 android:
   components:
-  - tools
-  - platform-tools
-  - tools
-  - build-tools-$ANDROID_BUILD_TOOLS_VERSION
-  - android-$ANDROID_API_LEVEL
-  - android-$ANDROID_EMU_API_LEVEL
-  - extra-android-support
-  - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL
-before_script:
-  - echo -e "Host github.com\n\tHostName github.com\n\tUser git\n\tIdentityFile ~/.ssh/id_travisci\n" >> ~/.ssh/config
-  - echo no | android create avd --force -n test -t android-$ANDROID_EMU_API_LEVEL --abi google_apis/$ANDROID_ABI
-  - emulator -avd test -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
+    - tools
+    - platform-tools
+    - build-tools-28.0.3
+    - android-28
+
+before_install:
+  - yes | sdkmanager "platforms;android-28"
+
 script:
-  - ./gradlew clean installDebug
-  - ./gradlew check
-  - ./gradlew testDebugUnitTest
-  - ./gradlew connectedDebugAndroidTest
+- ./gradlew check
