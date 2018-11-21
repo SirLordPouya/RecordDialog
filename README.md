@@ -3,12 +3,12 @@
 
 [![](https://jitpack.io/v/SirLordPouya/RecordDialog.svg)](https://jitpack.io/#SirLordPouya/RecordDialog)
 [![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)
-  <a target="_blank" href="https://travis-ci.org/IvanSotelo/RecordDialog"><img src="https://travis-ci.org/IvanSotelo/RecordDialog.svg?branch=master"></a>
+[![Build Status](https://travis-ci.org/SirLordPouya/VoiceRecorderDialog.svg?branch=master)](https://travis-ci.org/SirLordPouya/VoiceRecorderDialog)
+
 
 A Simple Wav audio recorder dialog based on [RecordDialog](https://github.com/IvanSotelo/RecordDialog)
 
-![Screen Shot](https://github.com/SirLordPouya/VoiceRecorderDialog/blob/master/voice_recorder_dialog.gif)
----
+<img src="https://github.com/SirLordPouya/VoiceRecorderDialog/blob/master/voice_recorder_dialog.gif" width="400">
 
 ## Releases:
 
